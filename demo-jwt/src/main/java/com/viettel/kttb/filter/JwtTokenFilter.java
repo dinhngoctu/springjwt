@@ -70,8 +70,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                     UsernamePasswordAuthenticationToken
                            namePassAuthen = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     namePassAuthen.setDetails(webDetail);
-                    Authentication authentication = authenticationManager.authenticate(namePassAuthen);
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                    SecurityContextHolder.getContext().setAuthentication(namePassAuthen);
                     response.setHeader("Authorization",BEARER + jwt);
                     isBasicAuthen = false;
                 }
